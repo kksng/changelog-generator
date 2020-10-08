@@ -4,7 +4,8 @@
   "description": "Tool for generating a changelog.md",
   "main": "app/index.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "jest *.test.js",
+    "watch-test": "jest --watchAll"
   },
   "repository": {
     "type": "git",
@@ -27,8 +28,10 @@
     "inquirer": "^7.3.3"
   },
   "devDependencies": {
-    "eslint": "^7.2.0",
+    "eslint": "^7.10.0",
     "eslint-config-airbnb-base": "^14.2.0",
-    "eslint-plugin-import": "^2.21.2"
+    "eslint-plugin-import": "^2.21.2",
+    "eslint-plugin-jest": "^24.1.0",
+    "jest": "^26.5.2"
   }
 }
