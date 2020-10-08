@@ -1,0 +1,33 @@
+{
+  "name": "change-gen",
+  "version": "0.0.2",
+  "description": "Tool for generating a changelog.md",
+  "main": "app/index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/dbmb/change-gen.git"
+  },
+  "keywords": [
+    "changelog",
+    "changelog.md"
+  ],
+  "author": "dbmb",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/dbmb/change-gen/issues"
+  },
+  "homepage": "https://github.com/dbmb/change-gen#readme",
+  "dependencies": {
+    "chalk": "^4.1.0",
+    "commander": "^6.1.0",
+    "git-parse": "^1.0.4",
+    "inquirer": "^7.3.3"
+  },
+  "devDependencies": {
+    "eslint": "^7.9.0",
+    "eslint-config-airbnb": "^18.2.0"
+  }
+}

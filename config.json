@@ -1,0 +1,8 @@
+{
+  "commitPrefix": "^(\\[KDMS\\-\\d+\\]|\\[NO-TASK\\])",
+  "taskPrefix": "^(\\[KDMS\\-\\d+\\])",
+  "withoutTaskPrefix": "^(\\[NO-TASK\\])",
+  "fixTaskKeyword": "(Исправлен|Поправлен)",
+  "changeTaskKeyword": "(Обновлен|Заменен|Рефакторинг|Выполнен)",
+  "featureTaskKeyword": "(Добавлен|Реализован)"
+}
