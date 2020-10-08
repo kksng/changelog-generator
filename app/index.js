@@ -59,17 +59,17 @@ cli
         return;
       }
       const filteredTaskCommits = filterCommitsByMatch(selectionCommits, taskPrefix);
-      const fixCommits = filterCommitsByMatch(filteredTaskCommits, fixTaskKeywords);
-      const changeCommits = filterCommitsByMatch(filteredTaskCommits, changeTaskKeywords);
-      const featureCommits = filterCommitsByMatch(filteredTaskCommits, featureTaskKeywords);
+      const fixedCommits = filterCommitsByMatch(filteredTaskCommits, fixTaskKeywords);
+      const changedCommits = filterCommitsByMatch(filteredTaskCommits, changeTaskKeywords);
+      const addedCommits = filterCommitsByMatch(filteredTaskCommits, featureTaskKeywords);
 
-      const template = generateTemplate(
-        cmd.releaseVersion,
-        cmd.releaseDate,
-        featureCommits,
-        fixCommits,
-        changeCommits,
-      );
+      const template = generateTemplate({
+        releaseVersion: cmd.releaseVersion,
+        releaseDate: cmd.releaseDate,
+        addedCommits,
+        fixedCommits,
+        changedCommits,
+      });
 
       saveTemplate(template);
       logSuccess('Complete!');

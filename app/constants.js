@@ -32,4 +32,12 @@ module.exports = {
    * @type {string} - Default value for the file name of the generated template.
    */
   defautTemplateFileName: config.defautTemplateFileName,
+  /**
+   * @type {string} - Changelog template.
+   */
+  changelogTemplate: fs.readFileSync(`${__dirname}/../changelog-template`, 'utf8'),
+  /**
+   * @type {string} - The prefix before the commit row in the template
+   */
+  templateRowPrefix: config.templateRowPrefix,
 };

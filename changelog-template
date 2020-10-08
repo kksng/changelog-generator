@@ -1,0 +1,10 @@
+## [${releaseVersion}] - ${releaseDate}
+
+### Added
+${addedCommits}
+
+### Fixed
+${fixedCommits}
+
+### Changed
+${changedCommits}
