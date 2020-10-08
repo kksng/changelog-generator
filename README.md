@@ -1,5 +1,5 @@
 # change-gen
 
 ```
-node . list help
+node . gen help
 ```
