@@ -4,5 +4,6 @@
   "withoutTaskPrefix": "^(\\[NO-TASK\\])",
   "fixTaskKeyword": "(Исправлен|Поправлен)",
   "changeTaskKeyword": "(Обновлен|Заменен|Рефакторинг|Выполнен)",
-  "featureTaskKeyword": "(Добавлен|Реализован)"
+  "featureTaskKeyword": "(Добавлен|Реализован)",
+  "defautTemplateFileName": "template-changelog.md"
 }
