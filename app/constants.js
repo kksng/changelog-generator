@@ -1,6 +1,6 @@
 const fs = require('fs');
 
-const rawConfig = fs.readFileSync(__dirname + '/../config.json');
+const rawConfig = fs.readFileSync(`${__dirname}/../config.json`);
 const config = JSON.parse(rawConfig);
 
 module.exports = {
@@ -32,4 +32,4 @@ module.exports = {
    * @type {string} - Default value for the file name of the generated template.
    */
   defautTemplateFileName: config.defautTemplateFileName,
-}
+};

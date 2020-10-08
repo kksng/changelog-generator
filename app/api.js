@@ -1,8 +1,8 @@
-const { gitToJs } = require('git-parse')
+const { gitToJs } = require('git-parse');
 
 /**
  * Get commits list from repository
- * 
+ *
  * @param {string} pathToRepository - Path to your repository folder
  * @returns {Promise<Array<Commit>>}
  */
@@ -16,4 +16,4 @@ async function getCommits(pathToRepository) {
 
 module.exports = {
   getCommits,
-}
+};
