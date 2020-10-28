@@ -1,6 +1,6 @@
 {
   "name": "change-gen",
-  "version": "0.0.2",
+  "version": "0.1.0",
   "description": "Tool for generating a changelog.md",
   "main": "app/index.js",
   "scripts": {
@@ -15,7 +15,7 @@
     "changelog",
     "changelog.md"
   ],
-  "author": "dbmb",
+  "author": "Fedosov Nikita",
   "license": "MIT",
   "bugs": {
     "url": "https://github.com/dbmb/change-gen/issues"
@@ -24,7 +24,8 @@
   "dependencies": {
     "chalk": "^4.1.0",
     "commander": "^6.1.0",
-    "git-parse": "^1.0.4"
+    "git-parse": "^1.0.4",
+    "inquirer": "^7.3.3"
   },
   "devDependencies": {
     "eslint": "^7.10.0",

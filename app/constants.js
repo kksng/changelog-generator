@@ -1,9 +1,18 @@
 const fs = require('fs');
 
-const rawConfig = fs.readFileSync(`${__dirname}/../config.json`);
+const configFileName = 'cg.config.json';
+const rawConfig = fs.readFileSync(`${process.cwd()}/${configFileName}`);
 const config = JSON.parse(rawConfig);
 
 module.exports = {
+  /**
+   * @type {string} - The branch from which the changelog is generated
+   */
+  changelogBranch: config.changelogBranch,
+  /**
+   * @type {string} - Changelog file name
+   */
+  changelogFileName: config.changelogFileName,
   /**
    * @type {RegExp} - Regexp with prefixes of required commits.
    */
@@ -11,23 +20,27 @@ module.exports = {
   /**
    * @type {RegExp} - Regexp with a prefix of task tag. Example: [AAAA-1000]
    */
-  taskPrefix: new RegExp(config.taskPrefixRegex),
+  taskPrefix: new RegExp(config.taskPrefix),
   /**
    * @type {RegExp} - Regexp with prefix of no-task tag. Example: [NO-TASK]
    */
   withoutTaskPrefix: new RegExp(config.withoutTaskPrefix),
   /**
-   * @type {RegExp} - Keyword regex for bugfix commits.
+   * @type {RegExp} - Regexp with prefix for escape tasks.
    */
-  fixTaskKeywords: new RegExp(config.fixTaskKeyword),
+  escapeTasksPrefix: config.escapeTasksPrefix.length ? new RegExp(config.escapeTasksPrefix) : null,
   /**
-   * @type {RegExp} - Keyword regex for changes commits.
+   * @type {string} - Keyword regex for bugfix commits.
    */
-  changeTaskKeywords: new RegExp(config.changeTaskKeyword),
+  fixTaskKeywords: config.fixTaskKeyword,
   /**
-   * @type {RegExp} - Keyword regex for features commits.
+   * @type {string} - Keyword regex for changes commits.
    */
-  featureTaskKeywords: new RegExp(config.featureTaskKeyword),
+  changeTaskKeywords: config.changeTaskKeyword,
+  /**
+   * @type {string} - Keyword regex for added commits.
+   */
+  addedTaskKeywords: config.addedTaskKeyword,
   /**
    * @type {string} - Default value for the file name of the generated template.
    */

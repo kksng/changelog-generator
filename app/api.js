@@ -1,4 +1,6 @@
-const { gitToJs } = require('git-parse');
+const util = require('util');
+const { gitToJs, gitPull: gp } = require('git-parse');
+const exec = util.promisify(require('child_process').exec);
 
 /**
  * Get commits list from repository
@@ -14,6 +16,24 @@ async function getCommits(pathToRepository) {
   }
 }
 
+async function gitCheckout(pathToRepository, branch) {
+  try {
+    await exec(`cd ${pathToRepository} && git checkout ${branch}`);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
+async function gitPull(pathToRepository) {
+  try {
+    await gp(pathToRepository);
+  } catch (error) {
+    throw new Error(error);
+  }
+}
+
 module.exports = {
   getCommits,
+  gitCheckout,
+  gitPull,
 };
