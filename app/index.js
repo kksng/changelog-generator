@@ -114,7 +114,7 @@ cli
   .option('-rv --release-version <version>', 'Release version. Example: 1.0.0')
   .action(async (cmd) => {
     try {
-      if (cmd.fromCommit && cmd.toCommit) {
+      if (cmd.fromCommit && !cmd.toCommit) {
         throw new Error('missing argument --to-commit');
       }
 
