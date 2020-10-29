@@ -75,7 +75,7 @@ const initQuestions = [
     type: 'input', name: 'withoutTaskPrefix', message: 'Enter your without task commits prefix', default: '^(\\[NO-TASK\\])',
   },
   {
-    type: 'input', name: 'escapeTaskPrefix', message: 'Enter regex for commits to be skipped', default: null,
+    type: 'input', name: 'escapeTasksPrefix', message: 'Enter regex for commits to be skipped', default: null,
   },
   {
     type: 'input', name: 'fixTaskKeyword', message: 'Enter fix task keywords', default: 'Исправлен, Поправлен',

@@ -1,7 +1,13 @@
 const fs = require('fs');
 
 const configFileName = 'cg.config.json';
-const rawConfig = fs.readFileSync(`${process.cwd()}/${configFileName}`);
+const rawConfig = (() => {
+  try {
+    return fs.readFileSync(`${process.cwd()}/${configFileName}`);
+  } catch (error) {
+    return fs.readFileSync(`${__dirname}/../${configFileName}`);
+  }
+})();
 const config = JSON.parse(rawConfig);
 
 module.exports = {

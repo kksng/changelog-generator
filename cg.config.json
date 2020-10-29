@@ -1,0 +1,13 @@
+{
+  "changelogBranch": "develop",
+  "changelogFileName": "CHANGELOG.md",
+  "commitPrefix": "^(\\[TASK\\-\\d+\\]|\\[NO-TASK\\])",
+  "taskPrefix": "^(\\[TASK\\-\\d+\\])",
+  "withoutTaskPrefix": "^(\\[NO-TASK\\])",
+  "escapeTasksPrefix": "null",
+  "fixTaskKeyword": "Исправлен, Поправлен",
+  "changeTaskKeyword": "Обновлен, Заменен, Рефакторинг, Выполнен",
+  "addedTaskKeyword": "Добавлен, Реализован",
+  "defautTemplateFileName": "template-changelog.md",
+  "templateRowPrefix": "- "
+}
