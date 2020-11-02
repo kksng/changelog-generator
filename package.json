@@ -9,7 +9,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/dbmb/change-gen.git"
+    "url": "git+http://git.esphere.local/frontend/changelog-generator"
   },
   "keywords": [
     "changelog",
@@ -17,10 +17,7 @@
   ],
   "author": "Fedosov Nikita",
   "license": "MIT",
-  "bugs": {
-    "url": "https://github.com/dbmb/change-gen/issues"
-  },
-  "homepage": "https://github.com/dbmb/change-gen#readme",
+  "homepage": "http://git.esphere.local/frontend/changelog-generator#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "commander": "^6.1.0",
