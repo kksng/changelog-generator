@@ -4,7 +4,7 @@ const configFileName = 'cg.config.json';
 const rawConfig = (() => {
   try {
     return fs.readFileSync(`${process.cwd()}/${configFileName}`);
-  } catch (error) {
+  } catch (_) {
     return fs.readFileSync(`${__dirname}/../${configFileName}`);
   }
 })();

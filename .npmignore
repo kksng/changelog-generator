@@ -2,3 +2,4 @@
 .eslintrc
 .jest.config.json
 /lib/tests
+/coverage
