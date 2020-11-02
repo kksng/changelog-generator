@@ -2,7 +2,7 @@
   "name": "change-gen",
   "version": "0.1.0",
   "description": "Tool for generating a changelog.md",
-  "main": "app/index.js",
+  "bin": "app/index.js",
   "scripts": {
     "test": "jest test",
     "watch-test": "jest --watchAll"
@@ -33,5 +33,11 @@
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-jest": "^24.1.0",
     "jest": "^26.5.2"
+  },
+  "publishConfig": {
+    "registry": "http://nexus.esphere.local:8081/repository/npm-local/"
+  },
+  "engines": {
+    "node": ">=13.12.0"
   }
 }

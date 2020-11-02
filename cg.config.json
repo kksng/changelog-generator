@@ -1,13 +1,13 @@
 {
   "changelogBranch": "develop",
   "changelogFileName": "CHANGELOG.md",
+  "jiraLink": "https://jira.esphere.ru/browse/",
   "commitPrefix": "^(\\[TASK\\-\\d+\\]|\\[NO-TASK\\])",
   "taskPrefix": "^(\\[TASK\\-\\d+\\])",
   "withoutTaskPrefix": "^(\\[NO-TASK\\])",
-  "escapeTasksPrefix": "null",
+  "escapeTasksPrefix": "",
   "fixTaskKeyword": "Исправлен, Поправлен",
   "changeTaskKeyword": "Обновлен, Заменен, Рефакторинг, Выполнен",
   "addedTaskKeyword": "Добавлен, Реализован",
-  "defautTemplateFileName": "template-changelog.md",
   "templateRowPrefix": "- "
 }

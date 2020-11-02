@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 const fs = require('fs');
 const cli = require('commander');
 const inquirer = require('inquirer');
@@ -63,6 +65,9 @@ const initQuestions = [
     type: 'input', name: 'changelogFileName', message: 'What\'s your changelog file name', default: 'CHANGELOG.md',
   },
   {
+    type: 'input', name: 'jiraLink', message: 'Enter link to your jira', default: 'https://jira.esphere.ru/browse/',
+  },
+  {
     type: 'input', name: 'templateRowPrefix', message: 'Enter template row prefix', default: '- ',
   },
   {
@@ -112,6 +117,7 @@ cli
   .option('-tc --to-commit <hash>', 'Get commits to hash')
   .option('-rd --release-date <date>', 'Release date. Example: 21-12-2012')
   .option('-rv --release-version <version>', 'Release version. Example: 1.0.0')
+  .option('-jl --jira-link', 'Add link to jira')
   .action(async (cmd) => {
     try {
       if (cmd.fromCommit && !cmd.toCommit) {
