@@ -141,7 +141,7 @@ cli
       if (cmd.fromCommit) {
         const filteredTaskCommits = pipe(commits)(
           [getCommitsBetweenHashes, cmd.fromCommit, cmd.toCommit],
-          [filterCommitsByMatch, taskPrefix],
+          [filterCommitsByMatch, commitPrefix],
           [excludeCommitsByMatch, escapeTasksPrefix],
         );
 
@@ -196,7 +196,7 @@ cli
 
         const filteredTaskCommits = pipe(commits)(
           [getCommitsBetweenHashes, getCommitHash(fromCommit), getCommitHash(toCommit)],
-          [filterCommitsByMatch, taskPrefix],
+          [filterCommitsByMatch, commitPrefix],
           [excludeCommitsByMatch, escapeTasksPrefix],
         );
         const filterCommitsFromFilteredTasks = curry(filterCommitsByMatch)(filteredTaskCommits);
