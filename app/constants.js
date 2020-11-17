@@ -20,6 +20,10 @@ module.exports = {
    */
   changelogFileName: config.changelogFileName,
   /**
+   * @type {string} - Link to jira
+   */
+  jiraLink: config.jiraLink,
+  /**
    * @type {RegExp} - Regexp with prefixes of required commits.
    */
   commitPrefix: new RegExp(config.commitPrefix),

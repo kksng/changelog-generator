@@ -17,6 +17,7 @@ const {
   getProjectChangelog,
   pipe,
   curry,
+  map,
 } = require('../lib');
 const {
   getCommitsBetweenHashes,
@@ -26,6 +27,7 @@ const {
   sortCommitsByDate,
   getCommitHash,
   getNextCommit,
+  getCommitMessage,
 } = require('../lib/git');
 const {
   generateTemplate,
@@ -38,23 +40,26 @@ const {
   logWarning,
 } = require('../lib/log');
 const {
+  addLinkToRow,
   injectRelease,
   splitChangelog,
   getChangelogReleases,
   getLastChangelogRelease,
   getChangeMessageRowsFromRelease,
   getMessageFromChangeMessageRow,
+  excludeLinkFromRow,
 } = require('../lib/parser');
 
 const {
   commitPrefix,
-  taskPrefix,
   escapeTasksPrefix,
   fixTaskKeywords,
   changeTaskKeywords,
   addedTaskKeywords,
   changelogBranch,
   templateRowPrefix,
+  jiraLink,
+  taskPrefix,
 } = require('./constants');
 
 const initQuestions = [
@@ -74,10 +79,10 @@ const initQuestions = [
     type: 'input', name: 'commitPrefix', message: 'Enter your commits prefix (RegExp)', default: '^(\\[TASK\\-\\d+\\]|\\[NO-TASK\\])',
   },
   {
-    type: 'input', name: 'taskPrefix', message: 'Enter your task commits prefix', default: '^(\\[TASK\\-\\d+\\])',
+    type: 'input', name: 'taskPrefix', message: 'Enter your task commits prefix', default: '(\\[TASK\\-\\d+\\])',
   },
   {
-    type: 'input', name: 'withoutTaskPrefix', message: 'Enter your without task commits prefix', default: '^(\\[NO-TASK\\])',
+    type: 'input', name: 'withoutTaskPrefix', message: 'Enter your without task commits prefix', default: '(\\[NO-TASK\\])',
   },
   {
     type: 'input', name: 'escapeTasksPrefix', message: 'Enter regex for commits to be skipped', default: null,
@@ -129,15 +134,19 @@ cli
       const projectVersion = cmd.releaseVersion || getProjectVersion();
       const releaseDate = cmd.releaseDate || createReleaseDate();
 
+      logSuccess(`✓ Start checkout to ${changelogBranch}`);
       await gitCheckout(path, changelogBranch);
       logSuccess(`✓ Checkout to ${changelogBranch}`);
 
+      logSuccess('✓ Start pulling changes');
       await gitPull(path);
       logSuccess('✓ Pull changes');
 
+      logSuccess('✓ Start parsing commits');
       const commits = await getCommits(path, commitPrefix);
       logSuccess('✓ Gotten commits');
 
+      logSuccess('✓ Generating changelog');
       if (cmd.fromCommit) {
         const filteredTaskCommits = pipe(commits)(
           [getCommitsBetweenHashes, cmd.fromCommit, cmd.toCommit],
@@ -150,14 +159,23 @@ cli
           return;
         }
         const filterCommitsFromFilteredTasks = curry(filterCommitsByMatch)(filteredTaskCommits);
-        const fixedCommits = filterCommitsFromFilteredTasks(
+        const fixedCommits = pipe(filterCommitsFromFilteredTasks(
           convertKeywordsToRegexp(fixTaskKeywords),
+        ))(
+          [map, getCommitMessage],
+          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
         );
-        const changedCommits = filterCommitsFromFilteredTasks(
+        const changedCommits = pipe(filterCommitsFromFilteredTasks(
           convertKeywordsToRegexp(changeTaskKeywords),
+        ))(
+          [map, getCommitMessage],
+          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
         );
-        const addedCommits = filterCommitsFromFilteredTasks(
+        const addedCommits = pipe(filterCommitsFromFilteredTasks(
           convertKeywordsToRegexp(addedTaskKeywords),
+        ))(
+          [map, getCommitMessage],
+          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
         );
 
         const template = generateTemplate({
@@ -184,8 +202,10 @@ cli
                 .replace(/\//g, ''),
             ),
           ],
-        ).map((row) => getMessageFromChangeMessageRow(row, templateRowPrefix));
-
+          [map, (row) => excludeLinkFromRow(row, jiraLink)],
+          [map, (row) => getMessageFromChangeMessageRow(row, templateRowPrefix)],
+        );
+        console.log(releaseMessages);
         const lastReleaseCommitHash = getCommitHash(
           sortCommitsByDate(
             getCommitsByMessages(commits, releaseMessages),
@@ -200,15 +220,25 @@ cli
           [excludeCommitsByMatch, escapeTasksPrefix],
         );
         const filterCommitsFromFilteredTasks = curry(filterCommitsByMatch)(filteredTaskCommits);
-        const fixedCommits = filterCommitsFromFilteredTasks(
+        const fixedCommits = pipe(filterCommitsFromFilteredTasks(
           convertKeywordsToRegexp(fixTaskKeywords),
+        ))(
+          [map, getCommitMessage],
+          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
         );
-        const changedCommits = filterCommitsFromFilteredTasks(
+        const changedCommits = pipe(filterCommitsFromFilteredTasks(
           convertKeywordsToRegexp(changeTaskKeywords),
+        ))(
+          [map, getCommitMessage],
+          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
         );
-        const addedCommits = filterCommitsFromFilteredTasks(
+        const addedCommits = pipe(filterCommitsFromFilteredTasks(
           convertKeywordsToRegexp(addedTaskKeywords),
+        ))(
+          [map, getCommitMessage],
+          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
         );
+
         const template = generateTemplate({
           releaseVersion: projectVersion,
           releaseDate,
