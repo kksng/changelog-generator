@@ -205,7 +205,7 @@ cli
           [map, (row) => excludeLinkFromRow(row, jiraLink)],
           [map, (row) => getMessageFromChangeMessageRow(row, templateRowPrefix)],
         );
-        console.log(releaseMessages);
+
         const lastReleaseCommitHash = getCommitHash(
           sortCommitsByDate(
             getCommitsByMessages(commits, releaseMessages),
