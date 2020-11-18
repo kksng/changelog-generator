@@ -1,7 +1,7 @@
 {
   "changelogBranch": "develop",
   "changelogFileName": "CHANGELOG.md",
-  "jiraLink": "https://jira.esphere.ru/browse/",
+  "jiraLink": "https://jira.com/browse/",
   "commitPrefix": "^(\\[TASK\\-\\d+\\]|\\[NO-TASK\\])",
   "taskPrefix": "^(\\[TASK\\-\\d+\\])",
   "withoutTaskPrefix": "^(\\[NO-TASK\\])",

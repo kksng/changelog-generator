@@ -70,7 +70,7 @@ const initQuestions = [
     type: 'input', name: 'changelogFileName', message: 'What\'s your changelog file name', default: 'CHANGELOG.md',
   },
   {
-    type: 'input', name: 'jiraLink', message: 'Enter link to your jira', default: 'https://jira.esphere.ru/browse/',
+    type: 'input', name: 'jiraLink', message: 'Enter link to your jira', default: 'https://jira.com/browse/',
   },
   {
     type: 'input', name: 'templateRowPrefix', message: 'Enter template row prefix', default: '- ',
