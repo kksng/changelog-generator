@@ -1,45 +1,44 @@
-# change-gen
+# changelog-generator
 
-Репозиторий проекта: [GitLab](http://gitlab.esphere.local/frontend/changelog-generator)
+- [Description](#Description)
+- [Usage](#Usage)
+  - [Init](#Init)
+  - [First start](#First-start)
+  - [Manual mode](#Manual-mode)
+  - [Automatic mode](#Automatic-mode)
+- [Options](#Options)
+- [Contacts](#Contacts)
 
-- [Описание](#Описание)
-- [Использование](#Использование)
-  - [Инициализация](#Инициализация)
-  - [Первый запуск](#Первый-запуск)
-  - [Ручной режим](#Ручной-режим)
-  - [Автоматический режим](#Автоматический-режим)
-- [Команды](#Команды)
-- [Контакты](#Контакты)
+## Description
 
-## Описание
+*Change-gen* util for generates your changelog from git commits.
 
-Change-gen утилита для генерации чейджлога в вашем проекте на основе коммитов.
+## Usage
+There are two options for using the utility:
+- fully [automatic](#Automatic-mode) mode (implemented for js projects)
+- [manual](#Manual-mode) (available for projects in any language).
 
-## Использование
-Есть два варианта использования утилиты, в полностью [автоматическом](#Автоматический-режим) режиме (реализовано для js проектов)
-или в [ручном](#Ручной-режим) (доступно для проектов на любом языке).
+### Init
+To start, you need to initialize the configuration file, for this run `change-gen init`
+at the root of your repository and follow the instructions. As a result, the configuration file `cg.config.json` will appear in the root of your project.
 
-### Инициализация
-Для начала необходимо инициализировать файл конфигурации, для этого выполните `change-gen init`
-в корне вашего репозитория и следуйте инструкциям. В результате этого в корне появится файл конфигурации `cg.config.json`.
+### First start
+If before that you wrote a changelog by hand, you should run the program for the first time in [manual mode](#Manual-mode) too.
 
-### Первый запуск
-Если до этого вы писали чейджлог в ручном режиме, то первый запуск желательно выполнить тоже в [ручном режиме](#Ручной-режим).
+### Manual mode
+In manual mode, enter `change-gen gen --from-commit <fullHash> --to-commit <fullHash> --release-date 2020-12-20 --release-version 0.1.0`
+Where `--from-commit` is the most recent commit and` --to-commit` is the oldest commit.
 
-### Ручной режим
-В ручном режиме вводим `change-gen gen --from-commit <fullHash> --to-commit <fullHash> --release-date 2020-12-20 --release-version 0.1.0`
-Где `--from-commmit` самый свежий коммит и `--to-commit` самый старый коммит.
+### Automatic mode
+If you have a JS-project, run change-gen gen and that's it, otherwise, see [manual mode] (# Manual-mode). The generator will find the last commit in the previous release by itself and, based on this, will generate a new release until the last commit. You can also specify the release date (if you need to specify not today) and the version (by default taken from package.json) change-gen gen --release-date 2020-12-20 --release-version 0.1.0.
 
-### Автоматический режим
-Если ваш проект на js, выполняете `change-gen gen` и все, в противном случае смотрите [ручной режим](#Ручной-режим). Генератор сам найдет последний коммит в предыдущем релизе и на основе этого сгенерирует новый релиз до последнего коммита. Так же можете указать дату релиза(если нужно указать не сегодняшний день) и версию(по дефолту берется из package.json) `change-gen gen --release-date 2020-12-20 --release-version 0.1.0`.
+## Options
 
-## Команды
-
-Для просмотра списка команд воспользуйтесь
+To view the list of options, use:
 
 `change-gen help`
 
-## Контакты
-- Федосов Никита (fedosov.ni@esphere.ru)
+## Contacts
+- Fedosov Nikita (fedosov.ni@esphere.ru)
 
 

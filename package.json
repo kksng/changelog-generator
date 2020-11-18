@@ -9,15 +9,16 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+http://git.esphere.local/frontend/changelog-generator"
+    "url": "git+https://github.com/kksng/changelog-generator"
   },
   "keywords": [
     "changelog",
-    "changelog.md"
+    "changelog.md",
+    "generate changelog"
   ],
   "author": "Fedosov Nikita",
   "license": "MIT",
-  "homepage": "http://git.esphere.local/frontend/changelog-generator#readme",
+  "homepage": "https://github.com/kksng/changelog-generator#readme",
   "dependencies": {
     "chalk": "^4.1.0",
     "commander": "^6.1.0",
@@ -30,9 +31,6 @@
     "eslint-plugin-import": "^2.21.2",
     "eslint-plugin-jest": "^24.1.0",
     "jest": "^26.5.2"
-  },
-  "publishConfig": {
-    "registry": "http://nexus.esphere.local:8081/repository/npm-local/"
   },
   "engines": {
     "node": ">=13.12.0"
