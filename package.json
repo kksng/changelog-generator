@@ -16,7 +16,7 @@
     "changelog.md",
     "generate changelog"
   ],
-  "author": "Fedosov Nikita",
+  "author": "Fedosov Nikita (fedosov.ni@esphere.ru)",
   "license": "MIT",
   "homepage": "https://github.com/kksng/changelog-generator#readme",
   "dependencies": {

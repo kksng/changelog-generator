@@ -1,6 +1,7 @@
 # changelog-generator
 
 - [Description](#Description)
+- [Installation](#Installation)
 - [Usage](#Usage)
   - [Init](#Init)
   - [First start](#First-start)
@@ -10,8 +11,11 @@
 - [Contacts](#Contacts)
 
 ## Description
-
 *Change-gen* util for generates your changelog from git commits.
+
+## Installation
+Locally to the project: `npm i --save-dev change-gen` or` yarn add -D change-gen`.
+Globally: `npm i -g change-gen` or` yarn global add change-gen`
 
 ## Usage
 There are two options for using the utility:
@@ -33,7 +37,6 @@ Where `--from-commit` is the most recent commit and` --to-commit` is the oldest 
 If you have a JS-project, run change-gen gen and that's it, otherwise, see [manual mode] (# Manual-mode). The generator will find the last commit in the previous release by itself and, based on this, will generate a new release until the last commit. You can also specify the release date (if you need to specify not today) and the version (by default taken from package.json) change-gen gen --release-date 2020-12-20 --release-version 0.1.0.
 
 ## Options
-
 To view the list of options, use:
 
 `change-gen help`
