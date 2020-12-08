@@ -133,6 +133,7 @@ cli
       const projectChangelog = getProjectChangelog();
       const projectVersion = cmd.releaseVersion || getProjectVersion();
       const releaseDate = cmd.releaseDate || createReleaseDate();
+      const withLink = cmd.jiraLink;
 
       logSuccess(`✓ Start checkout to ${changelogBranch}`);
       await gitCheckout(path, changelogBranch);
@@ -163,19 +164,19 @@ cli
           convertKeywordsToRegexp(fixTaskKeywords),
         ))(
           [map, getCommitMessage],
-          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
+          [map, (message) => (withLink ? addLinkToRow(message, jiraLink, taskPrefix) : message)],
         );
         const changedCommits = pipe(filterCommitsFromFilteredTasks(
           convertKeywordsToRegexp(changeTaskKeywords),
         ))(
           [map, getCommitMessage],
-          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
+          [map, (message) => (withLink ? addLinkToRow(message, jiraLink, taskPrefix) : message)],
         );
         const addedCommits = pipe(filterCommitsFromFilteredTasks(
           convertKeywordsToRegexp(addedTaskKeywords),
         ))(
           [map, getCommitMessage],
-          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
+          [map, (message) => (withLink ? addLinkToRow(message, jiraLink, taskPrefix) : message)],
         );
 
         const template = generateTemplate({
@@ -224,19 +225,19 @@ cli
           convertKeywordsToRegexp(fixTaskKeywords),
         ))(
           [map, getCommitMessage],
-          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
+          [map, (message) => (withLink ? addLinkToRow(message, jiraLink, taskPrefix) : message)],
         );
         const changedCommits = pipe(filterCommitsFromFilteredTasks(
           convertKeywordsToRegexp(changeTaskKeywords),
         ))(
           [map, getCommitMessage],
-          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
+          [map, (message) => (withLink ? addLinkToRow(message, jiraLink, taskPrefix) : message)],
         );
         const addedCommits = pipe(filterCommitsFromFilteredTasks(
           convertKeywordsToRegexp(addedTaskKeywords),
         ))(
           [map, getCommitMessage],
-          [map, (message) => addLinkToRow(message, jiraLink, taskPrefix)],
+          [map, (message) => (withLink ? addLinkToRow(message, jiraLink, taskPrefix) : message)],
         );
 
         const template = generateTemplate({
